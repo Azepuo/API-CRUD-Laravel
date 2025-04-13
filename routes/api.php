@@ -3,4 +3,5 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
-Route::get('/products', [ProductController::class, 'afficherProduitsApi']);
+// Routes API CRUD Produits
+Route::apiResource('products', ProductController::class);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ProductController extends Controller
 {
@@ -45,4 +46,11 @@ class ProductController extends Controller
         $product->delete();
         return response()->json(null, 204);
     }
+    public function afficherProduitsApi()
+{
+    $response = Http::get('http://localhost:8000/api/products');
+    $produits = $response->json();
+
+    return view('products.index', compact('produits'));
+}
 }
